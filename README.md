@@ -80,6 +80,30 @@ you will receive an outline pick the all the headings and subpoints respond with
 
 give url to infer keywords or input keywords
 
+https://github.com/gcoter/extract-keywords-from-youtube-videos/blob/master/src/extract_keywords_from_description_and_summary.py
+
+
+```
+    extract_keywords_prompt = """
+        Title: "{title}"
+
+        Description:
+        "{description}"
+
+        Summary of the transcript:
+        "{summary}"
+
+        From all of the information above, extract up to 10 keywords (preferably in English).
+        Use this format (make sure your output can be read by Python's `json.loads`):
+
+        {{
+            "title": "{title}",
+            "keywords": ["keyword_1", "keyword_2", ...]
+        }}
+    """
+```
+
+
 
 make outline and ask question 
 
@@ -126,3 +150,299 @@ Please follow these instructions carefully and write a high-quality and original
 Start immediately with the content of the blog post:"""
 )****
 ```
+
+
+
+blog auto 
+
+
+
+
+https://github.com/convergine/craft-content-buddy/blob/46ec17e97e3de5a7c3c61f9b40859be33ad479c9/src/templates/content/_index.twig#L305
+
+```
+        <div class="buddy-spoiler">
+            <label>{{ 'promptsCustomize'|t('convergine-contentbuddy') }}</label>
+            <div class="buddy-spoiler-content">
+                <p>{{ 'promptsCustomizeDescription'|t('convergine-contentbuddy') }}</p>
+                <p>{{ 'You can use the following placeholders in your prompts:'|t('convergine-contentbuddy') }}</p>
+
+                <p><code>[[description]]</code> - {{ 'this will be replaced with you article description/topic.'|t('convergine-contentbuddy') }}</p>
+                <p><code>[[section]]</code> - {{ 'this will be replaced with the text of generated section.'|t('convergine-contentbuddy') }}</p>
+                <p><code>[[text]]</code> - {{ 'this will be replaced with text needed for that prompt.'|t('convergine-contentbuddy') }}</p>
+                <p><code>[[section-headlines]]</code> - {{ 'this will be replaced with the suggested headlines for the sections about to be generated.'|t('convergine-contentbuddy') }}</p>
+                <p><code>[[keywords]]</code> - {{ 'this will be replaced with the SEO keywords you entered.'|t('convergine-contentbuddy') }}</p>
+                <p><code>[[number-of-headlines]]</code> - {{ 'this will be replaced with the number of headlines for the article section.'|t('convergine-contentbuddy') }}</p>
+                <p>&nbsp;</p>
+                {{ forms.textareaField({
+                    label: 'article-title: uses <code>description</code>, <code>section-headlines</code>'|t('convergine-contentbuddy'),
+                    name: 'buddy-prompts[article-title]',
+                    id: 'buddy-prompt-article-title',
+                    value: 'Generate a title for an article that discusses the following topic:
+[[description]]
+The article will include the following sections:
+[[section-headlines]]
+
+Title:',
+                    autofocus: true,
+                    instructions: '',
+                    first: true,
+                    placeholder:'',
+                    rows:5
+                }) }}
+
+                {{ forms.textareaField({
+                    label: 'article-title-with-seo-keywords: uses <code>description</code>, <code>section-headlines</code>, <code>keywords</code>'|t('convergine-contentbuddy'),
+                    name: 'buddy-prompts[article-title-with-seo]',
+                    id: 'buddy-prompt-article-title-with-seo',
+                    value: 'Generate a title for an article that discusses the following topic:
+[[description]]
+The article will include the following sections:
+[[section-headlines]]
+Try to use the following seo keywords when possible: [[keywords]]
+
+Title:',
+                    autofocus: true,
+                    instructions: '',
+                    first: true,
+                    placeholder:'',
+                    rows:7
+                }) }}
+
+                {{ forms.textareaField({
+                    label: 'article-intro: uses <code>description</code>, <code>section-headlines</code>'|t('convergine-contentbuddy'),
+                    name: 'buddy-prompts[article-intro]',
+                    id: 'buddy-prompt-article-intro',
+                    value: 'Write an introduction for an article that discusses the following topic:
+[[description]]
+The article includes the following sections:
+[[section-headlines]]
+
+Article Intro:',
+                    autofocus: true,
+                    instructions: '',
+                    first: true,
+                    placeholder:'',
+                    rows:6
+                }) }}
+
+                {{ forms.textareaField({
+                    label: 'article-intro-with-seo-keywords: uses <code>description</code>, <code>section-headlines</code>, <code>keywords</code>'|t('convergine-contentbuddy'),
+                    name: 'buddy-prompts[article-intro-with-seo]',
+                    id: 'buddy-prompt-article-intro-with-seo',
+                    value: 'Write an introduction for an article that discusses the following topic:
+[[description]]
+The article includes the following sections:
+[[section-headlines]]
+Try to use the following seo keywords when possible: [[keywords]]
+
+Article Intro:',
+                    autofocus: true,
+                    instructions: '',
+                    first: true,
+                    placeholder:'',
+                    rows:7
+                }) }}
+
+                {{ forms.textareaField({
+                    label: 'section-headlines: uses <code>number-of-headlines</code>, <code>description</code>'|t('convergine-contentbuddy'),
+                    name: 'buddy-prompts[section-headlines]',
+                    id: 'buddy-prompt-section-headlines',
+                    value: 'Suggest a list of [[number-of-headlines]] possible headlines of sections for an article that will cover the following topic:
+[[description]]
+
+Section headlines:',
+                    autofocus: true,
+                    instructions: '',
+                    first: true,
+                    placeholder:'',
+                    rows:4
+                }) }}
+
+                {{ forms.textareaField({
+                    label: 'section-headlines-with-seo-keywords: uses <code>number-of-headlines</code>, <code>description</code>, <code>keywords</code>'|t('convergine-contentbuddy'),
+                    name: 'buddy-prompts[section-headlines-with-seo]',
+                    id: 'buddy-prompt-section-headlines-with-seo',
+                    value: 'Suggest a list of [[number-of-headlines]] possible headlines of sections for an article that will cover the following topic:
+[[description]]
+Try to use the following seo keywords when possible: [[keywords]]
+
+Section headlines:',
+                    autofocus: true,
+                    instructions: '',
+                    first: true,
+                    placeholder:'',
+                    rows:5
+                }) }}
+
+                {{ forms.textareaField({
+                    label: 'section: uses <code>description</code>, <code>section-headline</code>'|t('convergine-contentbuddy'),
+                    name: 'buddy-prompts[section]',
+                    id: 'buddy-prompt-section',
+                    value: 'I\'m writing an article about the follow topic:
+[[description]]
+
+As part of this article, write a text section that discusses the following: [[section-headline]]
+
+Section body without the title:',
+                    autofocus: true,
+                    instructions: '',
+                    first: true,
+                    placeholder:'',
+                    rows:6
+                }) }}
+
+                {{ forms.textareaField({
+                    label: 'section-with-seo: uses <code>description</code>, <code>section-headline</code>, <code>keywords</code>'|t('convergine-contentbuddy'),
+                    name: 'buddy-prompts[section-with-seo]',
+                    id: 'buddy-prompt-section-with-seo',
+                    value: 'I\'m writing an article about the follow topic:
+[[description]]
+
+As part of this article, write a text section that discusses the following: [[section-headline]]
+
+Try to use the following seo keywords when possible: [[keywords]]
+
+Section body without the title:',
+                    autofocus: true,
+                    instructions: '',
+                    first: true,
+                    placeholder:'',
+                    rows:8
+                }) }}
+                {{ forms.textareaField({
+                    label: 'section-with-seo: uses <code>description</code>, <code>section-headline</code>, <code>keywords</code>'|t('convergine-contentbuddy'),
+                    name: 'buddy-prompts[section-with-seo]',
+                    id: 'buddy-prompt-section-with-seo',
+                    value: 'I\'m writing an article about the follow topic:
+[[description]]
+
+As part of this article, write a text section that discusses the following: [[section-headline]]
+
+Try to use the following seo keywords when possible: [[keywords]]
+
+Section body without the title:',
+                    autofocus: true,
+                    instructions: '',
+                    first: true,
+                    placeholder:'',
+                    rows:8
+                }) }}
+
+                {{ forms.textareaField({
+                    label: 'article-conclusion: uses <code>description</code>, <code>section-headlines</code>'|t('convergine-contentbuddy'),
+                    name: 'buddy-prompts[article-conclusion]',
+                    id: 'buddy-prompt-article-conclusion',
+                    value: 'Write a conclusion for an article that discusses the following topic:
+[[description]]
+The article includes the following sections:
+[[section-headlines]]
+
+Article conclusion:',
+                    autofocus: true,
+                    instructions: '',
+                    first: true,
+                    placeholder:'',
+                    rows:6
+                }) }}
+
+                {{ forms.textareaField({
+                    label: 'article-conclusion-with-seo: uses <code>description</code>, <code>section-headlines</code>'|t('convergine-contentbuddy'),
+                    name: 'buddy-prompts[article-conclusion-with-seo]',
+                    id: 'buddy-prompt-article-conclusion-with-seo',
+                    value: 'Write a conclusion for an article that discusses the following topic:
+[[description]]
+The article includes the following sections:
+[[section-headlines]]
+Try to use the following seo keywords when possible: [[keywords]]
+
+Article conclusion:',
+                    autofocus: true,
+                    instructions: '',
+                    first: true,
+                    placeholder:'',
+                    rows:7
+                }) }}
+
+                {{ forms.textareaField({
+                    label: 'image: uses <code>text</code>'|t('convergine-contentbuddy'),
+                    name: 'buddy-prompts[image]',
+                    id: 'buddy-prompt-image',
+                    value: 'Describe an image that would be best fit for this text:
+
+ [[text]]
+
+---
+Creative image description in one sentence of 6 words:
+',
+                    autofocus: true,
+                    instructions: '',
+                    first: true,
+                    placeholder:'',
+                    rows:7
+                }) }}
+
+                {{ forms.textareaField({
+                    label: 'section-summary: uses <code>section</code>'|t('convergine-contentbuddy'),
+                    name: 'buddy-prompts[section-summary]',
+                    id: 'buddy-prompt-section-summary',
+                    value: 'Write a short section summary for the following article section text:
+[[section]]
+
+Section summary:',
+                    autofocus: true,
+                    instructions: '',
+                    first: true,
+                    placeholder:'',
+                    rows:4
+                }) }}
+
+                {{ forms.textareaField({
+                    label: 'section-summary-with-seo: uses <code>section</code>'|t('convergine-contentbuddy'),
+                    name: 'buddy-prompts[section-summary-with-seo]',
+                    id: 'buddy-prompt-section-summary-with-seo',
+                    value: 'Write a short section summary for the following article section text:
+[[section]]
+Try to use the following seo keywords when possible: [[keywords]]
+
+Section summary:',
+                    autofocus: true,
+                    instructions: '',
+                    first: true,
+                    placeholder:'',
+                    rows:5
+                }) }}
+
+                {{ forms.textareaField({
+                    label: 'tldr: uses <code>text</code>'|t('convergine-contentbuddy'),
+                    name: 'buddy-prompts[tldr]',
+                    id: 'buddy-prompt-tldr',
+                    value: 'Write a TL;DR for the following text:
+[[text]]
+
+TL;DR:',
+                    autofocus: true,
+                    instructions: '',
+                    first: true,
+                    placeholder:'',
+                    rows:4
+                }) }}
+
+                {{ forms.textareaField({
+                    label: 'tldr-with-seo-keywords: uses <code>text</code>, <code>keywords</code>'|t('convergine-contentbuddy'),
+                    name: 'buddy-prompts[tldr-with-seo]',
+                    id: 'buddy-prompt-tldr-with-seo',
+                    value: 'Write a TL;DR for the following text:
+[[text]]
+Try to use the following seo keywords when possible: [[keywords]]
+
+TL;DR:',
+                    autofocus: true,
+                    instructions: '',
+                    first: true,
+                    placeholder:'',
+                    rows:4
+                }) }}
+```
+
+
