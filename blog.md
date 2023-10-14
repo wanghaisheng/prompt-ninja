@@ -204,3 +204,55 @@ Here's an outline for a pillar page on the topic of "YouTube Thumbnail Generator
 Please remember to fill in the details for each section, provide real examples, and include relevant statistics or examples where applicable. Additionally, make sure to add internal and external links as needed for context and credibility.
 ```
 
+
+To determine core topics from a seed keyword, you can use ChatGPT prompts like the following:
+
+1. **Broaden the Focus:**
+   - "Based on the seed keyword [insert_seed_keyword_here], can you suggest broader topics or themes that are closely related?"
+
+2. **Explore Subtopics:**
+   - "Starting with [insert_seed_keyword_here], what are some specific subtopics or aspects that can be covered?"
+
+3. **Niche Down:**
+   - "From [insert_seed_keyword_here], can you suggest more specific niches or areas of interest within this topic?"
+
+4. **Related Keywords:**
+   - "What are some related keywords or phrases that can be grouped together under the seed keyword [insert_seed_keyword_here]?"
+
+5. **Ask for Categories:**
+   - "If we were to categorize content around [insert_seed_keyword_here], what would be the main categories or subjects?"
+
+6. **Consider the Audience's Perspective:**
+   - "Thinking from the perspective of someone interested in [insert_seed_keyword_here], what main topics would they be looking for?"
+
+7. **Think About Content Types:**
+   - "Aside from articles, what other types of content could be created around [insert_seed_keyword_here]?"
+
+8. **Explore Trends:**
+   - "Are there any emerging trends or specific aspects related to [insert_seed_keyword_here] that are gaining attention?"
+
+By using these prompts, you can gather a variety of potential core topics related to your seed keyword. It's important to consider factors like relevance, audience interest, and potential for in-depth coverage when selecting the core topics.
+
+
+
+
+Broaden the Focus: Starting with [insert_seed_keyword_here], consider broader topics or themes that are closely related.
+Explore Subtopics: What are some specific subtopics or aspects that can be covered within [insert_seed_keyword_here]?
+Niche Down: From [insert_seed_keyword_here], suggest more specific niches or areas of interest within this topic.
+Related Keywords: Provide related keywords or phrases that can be grouped together under [insert_seed_keyword_here].
+Categorize Content: If we were to categorize content around [insert_seed_keyword_here], what would be the main categories or subjects?
+Audience Perspective: Thinking from the perspective of someone interested in [insert_seed_keyword_here], what main topics would they be looking for?
+Content Types: Aside from articles, what other types of content could be created around [insert_seed_keyword_here]?
+Explore Trends: Are there any emerging trends or specific aspects related to [insert_seed_keyword_here] that are gaining attention?"
+
+
+
+"Based on the seed keywords provided, can you suggest 10 detailed and specific blog post ideas related to each core topic? Please provide 3-5 relevant keywords  that at least have 3 words, longtail keywords is much better,for each blog post to ensure comprehensive coverage. Additionally, organize the generated blog ideas into distinct clusters or categories based on the core topics, and suggest internal linking opportunities to related content within the blogs.
+
+with the above blog idea,"I'd like to create a comprehensive pillar page on  each topic idea with the keywords. The goal is to provide readers with a comprehensive overview of this subject. Can you help me outline it? What are the main points we should cover in this pillar page? Can you elaborate on each subtopic and suggest some supporting points? In what order do you think these subtopics should appear for the most logical flow? Could you suggest some transition sentences or phrases that would help maintain coherence in the narrative? Should we include any images, examples, or statistics to support each subtopic? Where do you think we should include internal and external links for added context and credibility? Can you provide some ideas for an engaging introduction and a strong conclusion that summarizes the main points? Finally, are there any specific keywords that we should prioritize in this pillar page for SEO purposes?"
+
+
+
+
+
+
